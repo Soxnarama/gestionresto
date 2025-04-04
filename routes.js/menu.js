@@ -2,13 +2,19 @@ const express = require('express');
 const router = express.Router();
 const menuController = require('../controllers/menuController');
 
-// Route pour obtenir tous les menus
+// Récupérer tous les menus
 router.get('/', menuController.getAllMenus);
 
-// Route pour ajouter un menu
+// Détails d'un menu spécifique
+router.get('/:id', menuController.getMenuById);
+
+// Créer un menu
 router.post('/', menuController.createMenu);
 
-// Route pour obtenir un menu par ID
-router.get('/:id', menuController.getMenuById);
+// Modifier un menu
+router.put('/:id', menuController.updateMenu);
+
+// Supprimer un menu
+router.delete('/:id', menuController.deleteMenu);
 
 module.exports = router;

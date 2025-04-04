@@ -2,13 +2,19 @@ const express = require('express');
 const router = express.Router();
 const utilisateurController = require('../controllers/utilisateurController');
 
-// Route pour obtenir tous les utilisateurs
-router.get('/', utilisateurController.getAllUsers);
+// Créer un compte utilisateur
+router.post('/register', utilisateurController.register);
 
-// Route pour ajouter un utilisateur
-router.post('/', utilisateurController.createUser);
+// Se connecter
+router.post('/login', utilisateurController.login);
 
-// Route pour obtenir un utilisateur par ID
-router.get('/:id', utilisateurController.getUserById);
+// Se déconnecter
+router.post('/logout', utilisateurController.logout);
+
+// Changer mot de passe
+router.put('/change-password', utilisateurController.changePassword);
+
+// Récupérer un compte
+router.post('/recover', utilisateurController.recoverAccount);
 
 module.exports = router;
